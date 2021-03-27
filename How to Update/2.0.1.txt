@@ -1,0 +1,26 @@
+How to update from phpSocial v2.0.0 to v2.0.1 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+--------------------------------- MySQL ------------------------------------
+Log-in into phpMyAdmin (or your MySQL database) and on the SQL tab run the following SQL query:
+
+ALTER TABLE  `messages` CHANGE  `value`  `value` VARCHAR( 1024 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
+
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+/themes/dolphin/info.php
+/themes/dolphin/style.css
+/themes/dolphin/js/functions.js
+/themes/dolphin/html/profile/sidebar.html
+
+[or do a clean reinstall]
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Added automated input focus when opening a Chat Window
+- Changed the `event` column from `messages` table (can hold larger data)
+- Changed the sidebar plugins on profile pages to the bottom of the sidebar
+- Improved the delete and report buttons on comments while on mobile view
+- Fixed an issue where you couldn't comment on messages shared with Friends

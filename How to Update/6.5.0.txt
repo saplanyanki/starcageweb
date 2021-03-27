@@ -1,0 +1,21 @@
+How to update from phpSocial v6.4.0 to v6.5.0 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+--------------------------------- MySQL ------------------------------------
+ALTER TABLE `messages` CHANGE `value` `value` VARCHAR(2048) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '';
+
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+/themes/theme-name/style.css
+/themes/theme-name/info.php
+
+info.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Fixed Page messages from a pending friend request showing up after approving the request
+- Fixed messages posted in groups by suspended users still showing up
+- Other minor improvements

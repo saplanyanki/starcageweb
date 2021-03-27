@@ -1,0 +1,29 @@
+How to update from phpSocial v1.2.1 to v1.2.2 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/api.php
+/includes/classes.php
+
+/requests/load_profilecard.php
+
+/languages/english.php
+/languages/netherlands.php
+/languages/romanian.php
+
+/themes/dolphin/html/page/api.html
+/themes/dolphin/html/shared/timeline.html
+/themes/dolphin/html/shared/timeline_x.html
+/themes/dolphin/js/functions.js
+/themes/dolphin/style.css
+/themes/dolphin/info.php
+
+[or do a clean reinstall]
+
+----------------------------------------------------------------------------
+--------------------------------- Changelog --------------------------------
+- Added Profile Cards on avatars hovers on the Messages and Comments (On all pages)
+- Improved the images select button on IE9 and IE10.
+- Improved the API, now you can fetch details by Username instead of ID and the Profile Privacy is taken in consideration when fetching both profiles and messages.
+- Fixed an issue with the #hashtags not being created when they were at the beginning of a new line

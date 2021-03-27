@@ -1,0 +1,52 @@
+How to update from phpSocial v2.0.5 to v2.0.6 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+--------------------------------- MySQL ------------------------------------
+Log-in into phpMyAdmin (or your MySQL database) and on the SQL tab run the following SQL query:
+
+ALTER TABLE  `comments` ADD  `likes` INT NOT NULL AFTER  `time`;
+
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+/languages/english.php
+
+/requests/*.php (all the files)
+
+/sources/*.php (all the files)
+
+/themes/dolphin/html/wrapper.html
+/themes/dolphin/html/admin/*.html (all the files)
+/themes/dolphin/html/group/delete.html
+/themes/dolphin/html/group/edit.html
+/themes/dolphin/html/settings/*.html (all the files)
+/themes/dolphin/html/shared/timeline.html
+/themes/dolphin/html/shared/top.html
+/themes/dolphin/images/icon/emoticons/heart.png
+/themes/dolphin/images/icon/emoticons/confused.png
+/themes/dolphin/images/icon/emoticons/surprised.png
+/themes/dolphin/js/functions.js
+/themes/dolphin/info.php
+/themes/dolphin/style.css
+
+index.php
+info.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Reworked the likes system
+- Added Likes on Comments
+- Added Infinite Scrolling when hitting the end of the page on Desktop browsers
+- Added Facebook profile image fetch when registering trough facebook
+- Added confirmation dialogs when deleting a messages, comments or chats
+- Added visual highlight for messages and comments when viewed from the Admin Panel
+- Added new emoticons (heart, surprised and confused)
+- Added "People who like this" modal for likes on messages and comments
+- Added security protection against CSRF attacks
+- Improved the Dashboard statistics calculations
+- Improved the User Deletion function (likes counter of liked messages is now updated)
+- Improved the English translation
+- Changed the groups listing to display the group name instead of title in the Admin Panel
+- Fixed an issue with the ad-unit for Groups not showing in the sidebar

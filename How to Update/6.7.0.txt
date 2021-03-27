@@ -1,0 +1,19 @@
+How to update from phpSocial v6.6.0 to v6.7.0 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+/plugins/file_share/file_share.js
+/plugins/file_share/info.php
+
+/plugins/media_share/media_share.js
+/plugins/media_share/info.php
+
+info.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Fixed the file uploader not working on File Share and Media Share plugins
+- Fixed a rare case where the text could get converted to an emoji

@@ -1,0 +1,18 @@
+How to update from phpSocial v1.2.7 to v1.2.8 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+/themes/dolphin/js/functions.js
+
+[or do a clean reinstall]
+
+----------------------------------------------------------------------------
+--------------------------------- Changelog --------------------------------
+- Improved the Search for people (allowing special characters in search, e.g: accented characters)
+- Improved the YouTube embedding (now supports installations on servers with secured connection)
+- Fixed an issue where the search function would fail if the search was performed with special characters
+- Fixed an issue with the search function for #hashtags, in some cases it would return no results
+- Fixed an issue with the links that started with www. (they weren't created correctly)

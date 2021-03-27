@@ -1,0 +1,49 @@
+How to update from phpSocial v5.5.0 to v6.0.0 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+--------------------------------- MySQL ------------------------------------
+ALTER TABLE `admin` CHANGE `username` `username` VARCHAR(24) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL, CHANGE `password` `password` VARCHAR(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL; ALTER TABLE `settings` ADD `lk` VARCHAR(128) NULL AFTER `tracking_code`; ALTER TABLE `settings` ADD `lt` VARCHAR(16) NULL AFTER `tracking_code`; ALTER TABLE `settings` ADD `tos_url` VARCHAR(128) NOT NULL AFTER `tracking_code`, ADD `privacy_url` VARCHAR(128) NOT NULL AFTER `tos_url`;
+
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/vendor/* (all files)
+/includes/classes.php
+
+/plugins/cookie_law/cookie_law.php
+/plugins/cookie_law/info.php
+/plugins/dislike/dislike.php
+/plugins/dislike/info.php
+/plugins/poll/poll_vote.php
+/plugins/poll/info.php
+/plugins/video_call/requests/call.php
+/plugins/video_call/requests/check_call.php
+/plugins/video_call/requests/manage_call.php
+/plugins/video_call/info.php
+
+/requests/*.php (all files)
+
+/sources/*.php (all files)
+
+/themes/theme-name/html/admin/dashboard.html
+/themes/theme-name/html/admin/license.html
+/themes/theme-name/html/admin/site_settings.html
+/themes/theme-name/html/shared/top.html
+/themes/theme-name/js/functions.js
+/themes/theme-name/info.php
+
+.htaccess
+info.php
+image.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Reworked the Welcome landing page
+- Added "Terms of Use" and "Privacy Policy" agreement requirement on registration
+- Added support for custom "Terms of Service" and "Privacy Policy" page URL
+- Updated Guzzle HTTP Client to the latest version
+- Updated PHPMailer to the latest version
+- Improved the Registration and Login form (remembers the old values on error)
+- Improved support for PHP 7.4+
+- Changed the thumbnails path from "thumb" to "image"
+- Other minor improvements

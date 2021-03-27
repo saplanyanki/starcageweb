@@ -1,0 +1,29 @@
+How to update from phpSocial v2.1.0 to v2.1.1 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+/languages/english.php
+
+/requests/group.php
+
+/sources/feed.php
+/sources/welcome.php
+
+/themes/dolphin/html/admin/dashboard.html
+/themes/dolphin/images/icons/wf.png
+/themes/dolphin/info.php
+/themes/dolphin/style.css
+
+info.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Added Pages and Groups links on the Menu list
+- Added welcoming message after registration on the News Feed page
+- Improved security
+- Fixed the Messages posted in Groups not respecting the Group privacy
+- Fixed the URL on Page title
+- Other minor improvements

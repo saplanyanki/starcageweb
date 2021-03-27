@@ -1,0 +1,25 @@
+How to update from phpSocial v6.5.0 to v6.6.0 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/vendor/* (all files)
+/includes/classes.php
+
+/languages/english.php
+
+/plugins/* (all files)
+
+/sources/admin.php
+
+/themes/* (all files)
+
+info.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Added Video and Audio call support on MacOS and Safari
+- Improved the codebase (javascript now runs in strict mode)
+- Improved PHP 8 support
+- Updated all the dependencies to their latest versions
+- Other minor improvements

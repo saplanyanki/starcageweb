@@ -1,0 +1,12 @@
+How to update from phpSocial v3.0.4 to v3.0.5 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/requests/ (all files)
+
+info.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Fixed an issue with the custom timezone settings not being applied everywhere

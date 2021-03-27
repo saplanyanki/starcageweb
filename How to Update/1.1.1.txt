@@ -1,0 +1,12 @@
+How to update from phpSocial v1.1.0 to v1.1.1 [Don't forget to back up your files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+[or do a clean reinstall]
+
+----------------------------------------------------------------------------
+--------------------------------- Changelog --------------------------------
+- Fixed sharing a post already shared by another user not working as intended

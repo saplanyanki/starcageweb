@@ -1,0 +1,24 @@
+How to update from phpSocial v6.0.0 to v6.1.0 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/vendor/* (all files)
+
+/plugins/social_share/social_share.js
+/plugins/social_share/info.php
+/plugins/url_parser/url_parser.php
+/plugins/url_parser/info.php
+
+/themes/theme-name/js/jquery.js
+/themes/theme-name/info.php
+
+info.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Improved the URL parser plugin (requests now contain a UA)
+- Improved the Social Sharer plugin (better encoding, no characters limit for emails)
+- Updated the back-end dependencies to the latest version
+- Updated the front-end dependencies to the latest version
+- Other minor improvements

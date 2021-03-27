@@ -1,0 +1,17 @@
+How to update from phpSocial v6.1.0 to v6.2.0 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+/languages/english.php
+
+info.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Added verified badge to News Feed, Profile and Pages timelines
+- Added verified badge to Comments section
+- Added verified badge for verified users in Admin Panel
+- Other minor improvements

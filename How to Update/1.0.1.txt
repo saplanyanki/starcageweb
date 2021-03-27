@@ -1,0 +1,7 @@
+How to update from phpSocial v1 to v1.0.1
+
+Replace the following files with the new ones:
+------------------------------------------------------------------------------
+/requests/load_feed.php
+/themes/dolphin/style.css
+/themes/dolphin/html/admin (entire folder)

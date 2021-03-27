@@ -1,0 +1,73 @@
+How to update from phpSocial v1.2.0 to v1.2.1 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+--------------------------------- MySQL ------------------------------------
+Log-in into phpMyAdmin (or your MySQL database) and on the SQL tab run the following queries:
+1)
+ALTER TABLE  `settings` ADD  `notificationf` TINYINT NOT NULL AFTER  `notificationd`
+
+2)
+ALTER TABLE  `users` ADD  `notificationf` TINYINT NOT NULL AFTER  `notificationd`
+
+3)
+ALTER TABLE  `users` CHANGE  `notificationm`  `notifications` TINYINT( 4 ) NOT NULL
+
+4)
+ALTER TABLE  `settings` CHANGE  `notificationm`  `notifications` TINYINT( 4 ) NOT NULL
+
+5)
+ALTER TABLE  `settings` ADD  `email_new_friend` TINYINT NOT NULL AFTER  `email_like`
+
+6)
+ALTER TABLE  `users` ADD  `email_new_friend` TINYINT NOT NULL AFTER  `email_like`
+
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+/languages/english.php
+/languages/netherlands.php
+/languages/romanian.php
+
+/sources/admin.php
+/sources/settings.php
+/sources/welcome.php
+/sources/notifications.php
+
+/requests/load_subs.php
+/requests/check_notifications.php
+/requests/subscribe.php
+
+/themes/dolphin/html/settings/general.html
+/themes/dolphin/html/settings/notifications.html
+/themes/dolphin/html/admin/general.html
+/themes/dolphin/html/admin/user_settings.html
+/themes/dolphin/html/admin/manage_users.html
+/themes/dolphin/html/admin/edit_users.html
+/themes/dolphin/html/admin/login.html
+/themes/dolphin/html/welcome/content.html
+/themes/dolphin/images/icons/events/friendships.png
+/themes/dolphin/images/icons/friendships_n.png
+/themes/dolphin/images/icons/shared_n.png
+/themes/dolphin/js/functions.js
+/themes/dolphin/style.css
+/themes/dolphin/info.php
+
+/themes/dolphin/images/icons/events/messages.png [REMOVED]
+/themes/dolphin/images/icons/message_n.png [REMOVED]
+
+[or do a clean reinstall]
+
+----------------------------------------------------------------------------
+--------------------------------- Changelog --------------------------------
+- Added log-in with email (you can now use both the username and email to log-in)
+- Added visual and email notifications when someone adds you as friend
+- Added Delete function on the Edit User Page from the Admin Panel
+- Improved the Admin Panel display (added separators between input settings types)
+- Improved the English, Romanian and Dutch language file
+- Updated the icons, texts, and description for the Notifications Page
+- Fixed an issue in the Feed where in certain cases the Privacy icon would appear unwanted
+- Fixed an issue where your profile was set to semi-private/private the settings button won't show
+- Fixed User Chat Search not working properly due to a theme update
+- Fixed Verified User Image not appearing when loading more peoples in the Friends Pages

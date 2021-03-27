@@ -1,0 +1,20 @@
+How to update from phpSocial v6.2.0 to v6.3.0 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+plugins/file_share/file_share_event.php
+plugins/file_share/info.php
+
+/themes/theme-name/js/functions.js
+/themes/theme-name/info.php
+
+info.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Improved the Friends Suggestions widget (all genders are now shown by default)
+- Fixed an issue causing text to be truncated when editing Posts & Comments
+- Fixed labels for file size and total size being inversed in File Share plugin

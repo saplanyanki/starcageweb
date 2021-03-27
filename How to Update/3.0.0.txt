@@ -1,0 +1,122 @@
+How to update from phpSocial v2.2.0 to v3.0.0 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+--------------------------------- MySQL ------------------------------------
+Log-in into phpMyAdmin (or your MySQL database) and on the SQL tab run the following queries:
+
+CREATE TABLE IF NOT EXISTS `conversations` (
+  `from` int(11) NOT NULL,
+  `to` int(11) NOT NULL,
+  `read` tinyint(4) NOT NULL,
+  `cid` int(11) NOT NULL,
+  KEY `chat_count` (`to`,`read`),
+  KEY `chat_notifications_AND_chat_pagination` (`cid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+ALTER TABLE  `pages` ADD  `likes` INT NOT NULL DEFAULT  '0' AFTER  `verified` ;
+ALTER TABLE  `groups` ADD  `members` INT NOT NULL DEFAULT  '0' AFTER  `posts` ;
+ALTER TABLE  `settings` ADD  `friends_limit` INT NOT NULL AFTER  `email_provider` , ADD  `pages_limit` INT NOT NULL AFTER  `friends_limit` , ADD  `groups_limit` INT NOT NULL AFTER  `pages_limit` ;
+UPDATE `settings` SET `friends_limit` = 2000, `pages_limit` = 50, `groups_limit` = 100;
+ALTER TABLE  `settings` ADD  `groups` INT NOT NULL AFTER  `groups_limit` , ADD  `pages` INT NOT NULL AFTER  `groups_limit` ;
+UPDATE `settings` SET `pages` = 1, `groups` = 1;
+ALTER TABLE  `blocked` ADD INDEX `block_status` (  `uid` ,  `by` ) ;
+ALTER TABLE  `chat` ADD INDEX `unread_chat_messages` (  `from` ,  `to` ,  `read` ) ;
+ALTER TABLE  `chat` ADD INDEX `update_chat_status` (  `to` ,  `read` ) ;
+ALTER TABLE  `comments` ADD INDEX (  `mid` ) ;
+ALTER TABLE  `comments` ADD INDEX (  `uid` ) ;
+ALTER TABLE  `comments` ADD INDEX `admin_stats` (  `time` ) ;
+ALTER TABLE  `friendships` ADD INDEX `verify_friendship` (  `user1` ,  `user2` ,  `status` ) ;
+ALTER TABLE  `friendships` ADD INDEX `user1_count_friends_AND_select_friends` (  `user1` ,  `status` ,  `id` ) ;
+ALTER TABLE  `friendships` ADD INDEX `user2_count_friends_AND_select_friends` (  `user2` ,  `status` ,  `id` ) ;
+ALTER TABLE  `groups` ADD INDEX (  `name` ) ;
+ALTER TABLE  `groups` ADD INDEX `admin_stats` (  `time` ) ;
+ALTER TABLE  `groups_users` ADD INDEX `group_user_data` (  `group` ,  `user` ) ;
+ALTER TABLE  `groups_users` ADD INDEX `group_members_count` (  `group` ,  `status` ,  `permissions` ) ;
+ALTER TABLE  `groups_users` ADD INDEX `group_requests_blocked` (  `group` ,  `status` ,  `time` ) ;
+ALTER TABLE  `groups_users` ADD INDEX `joined_groups` (  `user` ,  `status` ) ;
+ALTER TABLE  `likes` ADD INDEX `profile_likes_count` (  `by` ,  `type` ) ;
+ALTER TABLE  `likes` ADD INDEX `verify_like` (  `post` ,  `by` ,  `type` ) ;
+ALTER TABLE  `likes` ADD INDEX `likes_statistics` (  `post` ,  `type` ,  `time` ) ;
+ALTER TABLE  `likes` ADD INDEX `admin_stats` (  `time` ) ;
+ALTER TABLE  `messages` ADD INDEX (  `public` ) ;
+ALTER TABLE  `messages` ADD INDEX (  `type` ) ;
+ALTER TABLE  `messages` ADD INDEX (  `uid` ) ;
+ALTER TABLE  `messages` ADD INDEX (  `group` ) ;
+ALTER TABLE  `messages` ADD INDEX (  `page` ) ;
+ALTER TABLE  `messages` ADD INDEX (  `time` ) ;
+ALTER TABLE  `messages` ADD INDEX `news_feed` (  `uid` ,  `group` ,  `page` ,  `public` ) ;
+ALTER TABLE  `messages` ADD INDEX (  `value` ) ;
+ALTER TABLE  `notifications` ADD INDEX `page_activity` (  `from` ,  `type` ) ;
+ALTER TABLE  `notifications` ADD INDEX `notifications_widget` (  `to` ,  `type` ,  `read` ) ;
+ALTER TABLE  `pages` ADD INDEX `page_page` (  `name` ) ;
+ALTER TABLE  `pages` ADD INDEX `page_owner` (  `by` ) ;
+ALTER TABLE  `pages` ADD INDEX `admin_stats` (  `time` ) ;
+ALTER TABLE  `reports` ADD INDEX (  `state` ) ;
+ALTER TABLE  `reports` ADD INDEX (  `time` ) ;
+ALTER TABLE  `users` ADD INDEX (  `username` ) ;
+ALTER TABLE  `users` ADD INDEX (  `gender` ) ;
+ALTER TABLE  `users` ADD INDEX `admin_manage_user_moderators` (  `user_group` ) ;
+ALTER TABLE  `users` ADD INDEX `admin_manage_user_verified` (  `verified` ) ;
+ALTER TABLE  `users` ADD INDEX `admin_manage_user_suspended` (  `suspended` ) ;
+ALTER TABLE  `users` ADD INDEX `user_active` (  `idu` ,  `suspended` ) ;
+ALTER TABLE  `users` ADD INDEX `admin_stats_registered` (  `date` ) ;
+ALTER TABLE  `users` ADD INDEX `admin_stats_online` (  `online` ) ;
+UPDATE `groups` SET `members` = (SELECT COUNT(*) FROM `groups_users` WHERE `groups_users`.`group` = `groups`.`id` AND `groups_users`.`status` = '1'), `time` = `time`;
+UPDATE `pages` SET `likes` = (SELECT COUNT(*) FROM `likes` WHERE `likes`.`type` = 2 AND `likes`.`post` = `pages`.`id`), `time` = `time`;
+
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+/languages/english.php
+
+/sources/admin.php
+/sources/feed.php
+/sources/group.php
+/sources/notifications.php
+/sources/page.php
+/sources/post.php
+/sources/profile.php
+/sources/search.php
+/sources/settings.php
+
+/requests/check_notifications.php
+/requests/friend.php
+/requests/group.php
+/requests/load_blocked.php
+/requests/load_comments.php
+/requests/load_notifications.php
+/requests/load_tags.php
+/requests/page.php
+
+/themes/dolphin/html/wrapper.html
+/themes/dolphin/html/admin/manage_reports.html
+/themes/dolphin/html/admin/site_settings.html
+/themes/dolphin/html/admin/stats.html
+/themes/dolphin/html/search/sidebar.html
+/themes/dolphin/html/settings/blocked.html
+/themes/dolphin/html/settings/notifications.html
+/themes/dolphin/js/functions.js
+/themes/dolphin/js/jquery.timeago.js
+/themes/dolphin/info.php
+/themes/dolphin/style.css
+
+.htaccess
+index.php
+info.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Massive Database and Software speed improvements
+- Reworked the Admin Stats page
+- Reworked the Notifications Page
+- Reworked the Sidebar Archive
+- Reworked the Friends Suggestions
+- Reworked the timestamps (added support for singular and plural nouns)
+- Added Sidebar Archive for #hashtag search results
+- Added Friends, Pages and Groups limitations
+- Added the ability to disable Groups and Pages functionality
+- Added "Seen" feature for chat messages
+- Added permalink support for the image caching system
+- Improved the site translation (the platform is now 100% translated)
+- Other minor improvements

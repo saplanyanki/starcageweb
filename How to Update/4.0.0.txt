@@ -1,0 +1,80 @@
+How to update from phpSocial v3.0.8 to v4.0.0
+----------------------------------------------------------------------------
+-----------------------------IMPORTANT NOTICE ------------------------------
+- Make a complete backup of your website and database;
+- Make sure your server runs on PHP 7+;
+- Make sure you have a valid SMTP server credentials in Admin Panel (or the php mail() function working);
+- The Admin Panel password will get reset to the default password which is "password". 
+- All Users passwords will get reset as a result of a new password encryption system, every user will need to recover their passwords using the "Recover Password" feature;
+
+----------------------------------------------------------------------------
+--------------------------------- MySQL ------------------------------------
+Log-in into phpMyAdmin (or your MySQL database) and on the SQL tab run the following queries:
+
+ALTER TABLE `chat` CHANGE `message` `message` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL;
+ALTER TABLE `comments` CHANGE `message` `message` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL;
+ALTER TABLE `messages` CHANGE `message` `message` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL;
+ALTER TABLE `messages` ADD `comments` INT NOT NULL DEFAULT '0' AFTER `likes`, ADD `shares` INT NOT NULL DEFAULT '0' AFTER `comments`;
+UPDATE `messages` SET `shares` = (SELECT COUNT(*) FROM (SELECT * from `messages` as `z` where `z`.`type` = 'shared') as `t` where `t`.`value` = `messages`.`id`), `time` = `time`;
+UPDATE `messages` SET `comments` = (SELECT COUNT(*) FROM `comments` WHERE `comments`.`mid` = `messages`.`id`), `time` = `time`;
+ALTER TABLE `users` CHANGE `born` `born` DATE NULL DEFAULT NULL;
+ALTER TABLE `users` CHANGE `salted` `salted` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '';
+ALTER TABLE `users` ADD `login_token` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL AFTER `salted`;
+ALTER TABLE `users` ADD `notificationm` TINYINT NOT NULL AFTER `notificationp`;
+ALTER TABLE `users` ADD `email_mention` TINYINT NOT NULL AFTER `notificationm`;
+ALTER TABLE `settings` ADD `email_mention` TINYINT NOT NULL AFTER `email_page_invite`;
+ALTER TABLE `settings` DROP `lperpost`;
+UPDATE `settings` SET `email_mention` = 1;
+UPDATE `users` SET `born` = NULL where `born` = '0000-00-00';
+UPDATE `admin` SET `password` = '$2y$10$hGg02aSLIpMkAAXngodN8Om2PeOw4jvNPKNP6AVZz3gPdmQ0I1Fx2';
+
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/* (all files, config.php should be manually updated to avoid resetting your configuration file)
+
+/languages/english.php
+
+/requests/* (all files)
+
+/sources/* (all files)
+
+/themes/dolphin/images/icons/events/* (all files)
+/themes/dolphin/images/icons/filters/* (all files)
+/themes/dolphin/images/icons/settings/* (all files)
+/themes/dolphin/images/icons/likes.svg
+/themes/dolphin/images/icons/comments.svg
+/themes/dolphin/images/icons/shares.svg
+/themes/dolphin/js/functions.js
+/themes/dolphin/js/jquery.js
+/themes/dolphin/js/jquery.timeago.js
+/themes/dolphin/html/admin/site_settings.html
+/themes/dolphin/html/group/content.html
+/themes/dolphin/html/info/content.html
+/themes/dolphin/html/page/content.html
+/themes/dolphin/html/shared/timeline.html
+/themes/dolphin/style.css
+
+index.php
+info.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Reworked the Registration/Log-in process (improved security, persistent login)
+- Added plugin localization support
+- Added @username auto-complete suggestions
+- Added @username mention notifications
+- Added counters for Comments and Shares on Posts
+- Added emoji support for Chats, Comments and Posts
+- Added over 200 emojis in the smiles selector
+- Added dedicated "Send" chat button for the mobile chat
+- Added image previews when uploading images
+- Added "Show in tab" for Posts in contextual menu
+- Updated the jQuery library to the latest version
+- Updated the Timeago jQuery plugin to the latest version
+- Updated PHPMailer to the latest version
+- Improved support for MySQL strict mode
+- Improved the way cookies are managed
+- Fixed smiles not being preserved when editing a post
+- Other minor improvements

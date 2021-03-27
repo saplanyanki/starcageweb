@@ -1,0 +1,19 @@
+How to update from phpSocial v1.1.5 to v1.1.6 [Don't forget to back up your files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+/sources/search.php
+/languages/english.php
+/languages/nederlands.php
+/languages/romanian.php
+
+[or do a clean reinstall]
+
+----------------------------------------------------------------------------
+--------------------------------- Changelog --------------------------------
+- Added nederlands.php language file
+- Improved the display of the Archive filter [ordering]
+- Improved the Page Titles for both people and hashtags Search
+- Fixed a bug in the User Profile, 'All' filter from Archive redirecting to profile page

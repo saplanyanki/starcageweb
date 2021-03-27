@@ -1,0 +1,24 @@
+How to update from phpSocial v1.2.5 to v1.2.6 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/sources/welcome.php
+
+/languages/english.php
+/languages/romanian.php
+/languages/netherlands.php
+
+/themes/dolphin/html/wrapper.html
+/themes/dolphin/js/functions.js
+/themes/dolphin/info.php
+/themes/dolphin/style.css
+
+[or do a clean reinstall]
+
+----------------------------------------------------------------------------
+--------------------------------- Changelog --------------------------------
+- Added Speech Recognition for the Search Input (the voice search is only supported by Chrome)
+- Improved the JavaScript functions file
+- Improved the English, Romanian and Dutch language file
+- Fixed a CSS property name

@@ -1,0 +1,16 @@
+How to update from phpSocial v1.1.8 to v1.1.9 [Don't forget to back up your files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+/requests/post_message.php
+
+[or do a clean reinstall]
+
+----------------------------------------------------------------------------
+--------------------------------- Changelog --------------------------------
+- Added line breaks into the posted messages
+- Improved the events on post message [prevent posting empty events]
+- Improved the messages privacy pages, they now obey to the profile privacy first
+- Fixed an issue with Friends Suggestions which could show you as friend suggestion

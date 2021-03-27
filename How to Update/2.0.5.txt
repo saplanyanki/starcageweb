@@ -1,0 +1,31 @@
+How to update from phpSocial v2.0.4 to v2.0.5 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+/languages/english.php
+
+/sources/admin.php
+
+/themes/dolphin/html/admin/dashboard.html
+/themes/dolphin/html/admin/general.html
+/themes/dolphin/html/shared/menu.html
+/themes/dolphin/images/icons/admin.png
+/themes/dolphin/js/functions.js
+/themes/dolphin/info.php
+/themes/dolphin/style.css
+
+index.php
+info.php
+
+[or do a clean reinstall]
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Added Admin Panel Dashboard (today's stats, 7 days graph stats, site info)
+- Added an icon on the top bar which indicates when logged-in as Admin
+- Improved the dynamic new messages function after posting a new message
+- Changed how the messages are being counted (shared messages are excluded)
+- Fixed the user not being removed from Groups when the user is deleted
+- Fixed an issue with special characters on names when opening a chat window

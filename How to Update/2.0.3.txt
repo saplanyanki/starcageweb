@@ -1,0 +1,20 @@
+How to update from phpSocial v2.0.2 to v2.0.3 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+/languages/english.php
+
+/requests/check_messages.php
+
+/sources/profile.php
+
+[or do a clean reinstall]
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Added mutual friends counter on profile pages
+- Added user_id value to the message footer plugin hook
+- Fixed the Pictures counter (now it excludes the pictures posted in groups)
+- Fixed the dynamic new messages function on profiles when logged in as Admin

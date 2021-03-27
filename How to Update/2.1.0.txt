@@ -1,0 +1,67 @@
+How to update from phpSocial v2.0.9 to v2.1.0 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+--------------------------------- MySQL ------------------------------------
+Log-in into phpMyAdmin (or your MySQL database) and on the SQL tab run the following queries (copy/paste the entire code block):
+
+ALTER TABLE  `users` ADD  `email_page_invite` TINYINT NOT NULL DEFAULT  '1' AFTER  `email_group_invite`;
+ALTER TABLE  `users` ADD  `notificationp` TINYINT NOT NULL DEFAULT  '1' AFTER  `notificationg`;
+ALTER TABLE  `users` ADD  `notificationx` TINYINT NOT NULL DEFAULT  '1' AFTER  `notificationg`;
+ALTER TABLE  `settings` ADD  `email_page_invite` TINYINT NOT NULL DEFAULT  '1' AFTER  `email_group_invite`;
+ALTER TABLE  `messages` ADD  `page` INT NOT NULL AFTER  `group`;
+CREATE TABLE IF NOT EXISTS `pages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `by` int(11) NOT NULL,
+  `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `category` int(3) NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `address` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `website` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `cover` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `verified` tinyint(1) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/config.php (this file needs to be manually updated, only a new string has been added)
+/includes/classes.php
+
+/languages/english.php
+
+/requests/ (all files)
+
+/sources/ (all files)
+
+/themes/dolphin/images/icons/ (all files and folders)
+/themes/dolphin/html/ (all files)
+/themes/dolphin/js/functions.js
+/themes/dolphin/style.php
+/themes/dolphin/info.php
+
+info.php
+thumb.php
+
+The detailed list of affected files can be found at: http://pastebin.com/raw/XiBBh3nd
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Reworked the Profile Cards
+- Reworked the Likes section on Profile Pages
+- Added Pages system
+- Added the ability to Poke people
+- Added the ability to block a user straight from his Profile page
+- Added the ability to display First and Last name fields on registration
+- Added the ability to delete comments of 3rd party users from your messages
+- Added Online Users statistic in the Admin Panel
+- Added pagination for Groups section on Profile Pages
+- Added context menu for the Comments actions
+- Improved the About section on Group pages (added icons for each field)
+- Improved the English translation
+- Fixed the comment notification not being deleted when the comment is deleted
+- Other minor improvements

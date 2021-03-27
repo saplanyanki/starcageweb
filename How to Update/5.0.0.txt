@@ -1,0 +1,58 @@
+How to update from phpSocial v4.7.0 to v5.0.0 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+--------------------------------- MySQL ------------------------------------
+Log-in into phpMyAdmin (or your MySQL database) and on the SQL tab run the following queries:
+
+CREATE TABLE `plugins_settings` ( `name` VARCHAR(128) NOT NULL , `value` TEXT NOT NULL , PRIMARY KEY (`name`)) ENGINE = InnoDB;
+ALTER TABLE `plugins` ADD `priority` INT NOT NULL AFTER `type`;
+UPDATE `messages` SET `type` = 'map' WHERE `type` = 'visited';
+ALTER TABLE `users` DROP `gplus`;
+
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/vendor/ (all files)
+/includes/autoload.php
+/includes/classes.php
+
+/languages/english.php
+
+/plugins/ (all files)
+
+/sources/admin.php
+/sources/profile.php
+/sources/search.php
+/sources/settings.php
+/sources/welcome.php
+
+/themes/dolphin/images/icons/events/map.svg
+/themes/dolphin/html/admin/site_settings.html
+/themes/dolphin/html/admin/edit_user.html
+/themes/dolphin/html/settings/general.html
+/themes/dolphin/html/shared/top.html
+/themes/dolphin/info.php
+/themes/dolphin/style.css
+
+info.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Added Announcements Plugin
+- Added Cookie Law Plugin
+- Added Dislike Plugin
+- Added File Share Plugin
+- Added Media Share Plugin
+- Added Poll Plugin
+- Added Social Share Plugin
+- Added URL Parser Plugin
+- Added Video Call Plugin
+- Added Weather Plugin
+- Added Guzzle HTTP client
+- Added priority option for plugins (plugins with higher priority will be executed first)
+- Added Timezone dropdown list in the Admin Panel
+- Improved the Plugins System (plugins now share the same SQL table when saving settings)
+- Improved the Documentation (now available online)
+- Fixed an issue with the Plugin Type 4 not returning any output
+- Fixed an issue where the site language will not change if the any of the active plugins would miss the translation file
+- Other minor improvements

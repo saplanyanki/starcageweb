@@ -1,0 +1,17 @@
+How to update from phpSocial v1.1.3 to v1.1.4 [Don't forget to back up your files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/language/english.php
+/language/romanian.php
+/includes/classes.php
+/themes/dolphin/html/shared/top.html
+
+[or do a clean reinstall]
+
+----------------------------------------------------------------------------
+--------------------------------- Changelog --------------------------------
+- Improved the platform and the theme translation
+- Fixed a bug in User Settings which caused the profile born date to keep resetting
+- Fixed a profile bug which prevented displaying the sidebar when the user had no posts

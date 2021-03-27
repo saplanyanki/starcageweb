@@ -1,0 +1,35 @@
+How to update from phpSocial v1.2.9 to v1.3.0 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+/languages/english.php
+/languages/romanian.php
+/languages/netherland.php
+
+/themes/dolphin/html/search/sidebar.html
+/themes/dolphin/js/functions.js
+/themes/dolphin/style.css
+/themes/dolphin/info.php
+
+/sources/settings.php
+/sources/search.php
+
+/requests/load_people.php
+
+[or do a clean reinstall]
+
+----------------------------------------------------------------------------
+--------------------------------- Changelog --------------------------------
+- Added image orientation detection (e.g: photos taken with mobile phones will rotate to the correct position)
+- Added Search by Age filter (Results can now be filtered between X & Y ages)
+- Added ability to select multiple filters at once (Search by Gender & Age at the same time)
+- Improved the Vimeo embedding (now supports installations on servers with secured connection)
+- Improved the translation (new strings added)
+- Improved the "View All Results" from search (allowing special characters, e.g: accented characters)
+- Improved the Search by Gender (allowing special characters, e.g: accented characters)
+- Improved searching by e-mail (now supports filters such as Gender and Age)
+- Improved the Sidebar Filters selectors (default states are now bolded)
+- Fixed an issue with IE11 (not being able to select events)
+- Fixed the text characters limit not working when posting Pictures

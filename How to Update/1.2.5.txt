@@ -1,0 +1,26 @@
+How to update from phpSocial v1.2.4 to v1.2.5 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+index.php
+/includes/classes.php
+
+/themes/dolphin/html/admin/content.html
+/themes/dolphin/html/messages/content.html
+/themes/dolphin/html/shared/timeline.html
+/themes/dolphin/html/shared/timeline_x.html
+/themes/dolphin/html/page (entire folder)
+/themes/dolphin/html/recover/content.html
+/themes/dolphin/html/settings/content.html
+/themes/dolphin/html/welcome/content.html
+/themes/dolphin/js/functions.js
+/themes/dolphin/info.php
+
+[or do a clean reinstall]
+
+----------------------------------------------------------------------------
+--------------------------------- Changelog --------------------------------
+- Added support for cyrillic, chinese, hebrew, accénted letters, etc. in #hashtags
+- Added extra classes for the main element containers giving theme developers greater flexibility
+- Improved the security against cross site scripting on the search results page

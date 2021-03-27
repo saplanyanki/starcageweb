@@ -1,0 +1,29 @@
+How to update from phpSocial v2.0.6 to v2.0.7 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+/languages/english.php
+
+/themes/dolphin/html/admin/edit_user.html
+/themes/dolphin/html/admin/security.html
+/themes/dolphin/html/settings/security.html
+/themes/dolphin/html/shared/menu.html
+/themes/dolphin/js/functions.js
+/themes/dolphin/info.php
+
+/sources/admin.php
+
+info.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Added current password confirmation requirement when changing a password
+- Improved the likes modal function (both requests and animation loaders)
+- Improved the likes function (speed improvements in certain cases)
+- Improved the user deletion message (now shows the username instead of the id)
+- Improved the English translation
+- Fixed the ajax requests paths for notifications and message privacies
+- Fixed the password requiring only 3 characters instead of 6 on User's Settings

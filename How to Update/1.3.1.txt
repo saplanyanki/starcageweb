@@ -1,0 +1,33 @@
+How to update from phpSocial v1.3.0 to v1.3.1 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+/languages/english.php
+/languages/romanian.php
+/languages/netherland.php
+
+/sources/admin.php
+/sources/post.php
+/requests/subscribe.php
+/requests/load_likes.php
+
+/themes/dolphin/js/functions.js
+/themes/dolphin/html/admin/manage_reports.html
+/themes/dolphin/html/wrapper.html
+/themes/dolphin/info.php
+
+[or do a clean reinstall]
+
+----------------------------------------------------------------------------
+--------------------------------- Changelog --------------------------------
+- Added ability to view all users that liked a status message
+- Added download function for images when viewed in the image viewer
+- Added changes notification for Manage Ads page
+- Improved translation for the Manage Reports page
+- Improved the chat messages page (auto scroll down when loading new chat)
+- Fixed unwanted character on email upon new friendship
+- Fixed published date being updated when changing the privacy of a message
+- Other minor improvements

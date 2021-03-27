@@ -1,0 +1,32 @@
+How to update from phpSocial v1.1.6 to v1.1.7 [Don't forget to back up your files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+/sources/search.php
+/sources/profile.php
+
+/languages/english.php
+/languages/nederlands.php
+/languages/romanian.php
+
+/themes/dolphin/style.css [renamed .sidebar-list to .sidebar-chat-list AND .sidebar-about to .sidebar-list]
+/themes/dolphin/info.php
+
+[or do a clean reinstall]
+
+----------------------------------------------------------------------------
+--------------------------------- Changelog --------------------------------
+- Added SoundCloud for Songs (simply drop in a song link into the Music input)
+- Added SoundCloud for Profiles with Playlist (simply drop in a song link into the Music input)
+- Added Message form to the Hashtags search results
+- Added extra classes to the sidebar widgets (improved the theme style capabilities for developers)
+- Improved the Trending Topics (merging all case sensitive hashtags)
+- Improved the Hashtags Search (merging all case sensitive hashtags)
+- Improved the way days are displayed [1...n] and months to months names
+- Improved the Born date on profiles (now months are translated as well)
+- Improved the Profile Page Titles (added full name when available)
+- Improved the English and Romanian language files
+- Changed the name of 'nederlands' language to 'netherlands' (english version)

@@ -1,0 +1,17 @@
+How to update from phpSocial v2.1.3 to v2.1.4 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+/requests/group.php
+
+info.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Added CSS classes to allow styling chat message containers based on authors
+- Fixed a rare case where the group members pagination wouldn't load new users
+- Fixed a rare case where two users could have the same email address
+- Other minor improvements

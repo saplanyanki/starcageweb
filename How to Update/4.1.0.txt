@@ -1,0 +1,35 @@
+How to update from phpSocial v4.0.0 to v4.1.0 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+--------------------------------- MySQL ------------------------------------
+Log-in into phpMyAdmin (or your MySQL database) and on the SQL tab run the following queries:
+
+ALTER TABLE `comments` ADD `type` VARCHAR(16) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' AFTER `message`, ADD `value` VARCHAR(1024) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' AFTER `type`;
+
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+/requests/post_comment.php
+
+/sources/settings.php
+
+/themes/dolphin/html/shared/menu.html
+/themes/dolphin/html/shared/top.html
+/themes/dolphin/js/functions.js
+/themes/dolphin/js/jquery.js
+/themes/dolphin/info.php
+/themes/dolphin/style.css
+
+info.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Added Image Upload for Comments
+- Updated the jQuery library to the latest version
+- Improved support for the latest MySQL stable version
+- Improved the User Deletion function (chat images are now being deleted)
+- Fixed @mentions notifications not working when mentioning in comments
+- Fixed the Delete Account from User's Settings not working
+- Other minor improvements

@@ -1,0 +1,24 @@
+How to update from phpSocial v4.5.0 to v4.6.0 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+--------------------------------- MySQL ------------------------------------
+Log-in into phpMyAdmin (or your MySQL database) and on the SQL tab run the following queries:
+
+UPDATE `messages` SET `comments` = (SELECT COUNT(*) FROM `comments` WHERE `comments`.`mid` = `messages`.`id`), `time` = `time`;
+
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace all the software files, except the "/includes/config.php" file.
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Codebase improvements and cleanup
+- Added live load for new posts when on Page Timelines
+- Added restrictions for Moderators when deleting Pages & Groups
+- Improved the Admin & User authentication system
+- Fixed the new posts not loading live on News Feed when Permalinks enabled
+- Fixed missing sender's email address and title when suspending Users
+- Fixed an issue where plugin events would not initialize when on Plugins page
+- Fixed the comments counter not updating on Posts from Pages
+- Fixed the @mentions notifications not working on Posts from Pages
+- Fixed an issue with the Admin rights when viewing Friends pages
+- Other minor improvements

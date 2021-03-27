@@ -1,0 +1,17 @@
+How to update from phpSocial v2.1.1 to v2.1.2 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+/sources/search.php
+
+info.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Added missing title for Page Search results
+- Improved the Group messages privacy by excluding them from search results
+- Fixed the "Groups" URL from drop down menu pointing to Pages
+- Fixed the Search results people filters appearing when searching for Pages

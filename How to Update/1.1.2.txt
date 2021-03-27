@@ -1,0 +1,14 @@
+How to update from phpSocial v1.1.1 to v1.1.2 [Don't forget to back up your files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+/requests/delete.php
+/themes/dolphin/js/functions.js
+
+[or do a clean reinstall]
+
+----------------------------------------------------------------------------
+--------------------------------- Changelog --------------------------------
+- Added delete function to the chat messages.

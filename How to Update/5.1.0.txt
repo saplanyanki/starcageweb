@@ -1,0 +1,12 @@
+How to update from phpSocial v5.0.0 to v5.1.0 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+info.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Codebase improvements and cleanup
+- Other minor improvements

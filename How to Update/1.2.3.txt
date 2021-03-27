@@ -1,0 +1,15 @@
+How to update from phpSocial v1.2.2 to v1.2.3 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+/themes/dolphin/style.css
+/themes/dolphin/info.php
+
+[or do a clean reinstall]
+
+----------------------------------------------------------------------------
+--------------------------------- Changelog --------------------------------
+- Added extra classes for the events inside the message posts, giving theme developers greater flexibility regarding theme customizations.

@@ -1,0 +1,63 @@
+How to update from phpSocial v5.2.0 to v5.3.0 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+--------------------------------- MySQL ------------------------------------
+Log-in into phpMyAdmin (or your MySQL database) and on the SQL tab run the following queries:
+
+ALTER TABLE `groups` CHANGE `name` `name` VARCHAR(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
+ALTER TABLE `groups` CHANGE `title` `title` VARCHAR(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
+ALTER TABLE `pages` CHANGE `name` `name` VARCHAR(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
+ALTER TABLE `pages` CHANGE `title` `title` VARCHAR(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
+
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/vendor/* (all files)
+/includes/classes.php
+
+/languages/english.php
+
+/plugins/announcements/info.php
+/plugins/cookie_law/cookie_law.css
+/plugins/cookie_law/info.php
+/plugins/dislike/dislike.css
+/plugins/dislike/info.php
+/plugins/file_share/file_share.css
+/plugins/file_share/info.php
+/plugins/media_share/media_share.css
+/plugins/media_share/info.php
+/plugins/poll/poll.css
+/plugins/poll/info.php
+/plugins/social_share/social_share.css
+/plugins/social_share/info.php
+/plugins/weather/info.php
+/plugins/weather/weather.css
+/plugins/weather/weather_sidebar.php
+/plugins/video_call/* (all files)
+
+/sources/welcome.php
+
+/themes/dolphin/html/admin/content.html
+/themes/dolphin/html/group/content.html
+/themes/dolphin/html/info/content.html
+/themes/dolphin/html/messages/content.html
+/themes/dolphin/html/page/content.html
+/themes/dolphin/html/settings/avatar.html
+/themes/dolphin/html/settings/content.html
+/themes/dolphin/html/shared/timeline.html
+/themes/dolphin/html/wrapper.html.html
+/themes/dolphin/js/functions.js
+/themes/dolphin/info.php
+/themes/dolphin/style.css
+
+info.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Added RTL language support
+- Updated Guzzle HTTP Client to the latest version
+- Updated PHPMailer to the latest version
+- Improved Page names & titles (support for up to 64 characters)
+- Improved Group names & titles (support for up to 64 characters)
+- Video Call Plugin: Updated Twilio PHP & JS SDK to the latest version
+- Other minor improvements

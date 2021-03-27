@@ -1,0 +1,12 @@
+How to update from phpSocial v2.1.6 to v2.1.7 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/phpmailer/*.php (all files)
+
+info.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Updated the PHPMailer to 5.2.21 (security fix)

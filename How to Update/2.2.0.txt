@@ -1,0 +1,11 @@
+How to update from phpSocial v2.1.9 to v2.2.0 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+info.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Updated the Facebook API requests to reflect the new API changes

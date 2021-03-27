@@ -1,0 +1,18 @@
+How to update from phpSocial v5.4.0 to v5.5.0 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/vendor/* (all files)
+/includes/classes.php
+/includes/misc.php
+
+/plugins/weather/weather_sidebar.php
+/plugins/weather/info.php
+
+info.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Added support for MySQL 8
+- Other minor improvements

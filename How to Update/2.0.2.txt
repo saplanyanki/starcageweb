@@ -1,0 +1,36 @@
+How to update from phpSocial v2.0.1 to v2.0.2 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+/languages/english.php
+
+/plugins/example.zip
+
+/sources/feed.php
+/sources/group.php
+/sources/post.php
+/sources/profile.php
+/sources/search.php
+/sources/welcome.php
+
+/themes/dolphin/html/wrapper.html
+/themes/dolphin/info.php
+
+index.php
+page.php
+
+[or do a clean reinstall]
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Added a new plugin hook (head section can now include CSS & JS files)
+- Added a new plugin hook (message footer can now output content)
+- Improved the Messages event plugin hook (now allows even deeper integration)
+- Improved the Facebook username generator function
+- Improved the Developers Documentation and updated the plugin example
+- Improved the English translation
+- Updated the fetch function with a newer User Agent
+- Fixed an issue where the chat icons would still appear when disabled
+- Fixed an issue with the shared messages not being removed when deleting users

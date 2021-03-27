@@ -1,0 +1,77 @@
+How to update from phpSocial v2.0.8 to v2.0.9 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+--------------------------------- MySQL ------------------------------------
+Log-in into phpMyAdmin (or your MySQL database) and on the SQL tab run the following query:
+
+ALTER TABLE  `settings` ADD  `tracking_code` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL AFTER  `ad7`;
+ALTER TABLE  `users` ADD  `user_group` INT NOT NULL AFTER  `ip`;
+ALTER TABLE  `settings` ADD  `email_activation` TINYINT NOT NULL AFTER  `chatr`;
+ALTER TABLE  `settings` DROP `notificationl`, DROP `notificationc`, DROP `notifications`, DROP `notificationd`, DROP `notificationf`, DROP `notificationg`, DROP `mprivacy`, DROP `qperpage`, DROP `sound_new_notification`, DROP `sound_new_chat`;
+ALTER TABLE  `settings` ADD  `smtp_email` INT NOT NULL AFTER  `fbappsecret` ,
+ADD  `smtp_host` VARCHAR( 128 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL AFTER  `smtp_email` ,
+ADD  `smtp_port` INT NOT NULL AFTER  `smtp_host` ,
+ADD  `smtp_auth` INT NOT NULL AFTER  `smtp_port` ,
+ADD  `smtp_username` VARCHAR( 128 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL AFTER  `smtp_auth` ,
+ADD  `smtp_password` VARCHAR( 128 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL AFTER  `smtp_username`;
+
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/phpmailer/ (all the files)
+/includes/config.php (this file needs to be manually updated, only a new string has been added)
+/includes/classes.php
+
+/languages/english.php
+
+/requests/manage_reports.php
+/requests/manage_users.php
+/requests/load_people.php
+/requests/load_tags.php
+/requests/group.php
+
+/sources/admin.php
+/sources/feed.php
+/sources/page.php
+/sources/profile.php
+/sources/search.php
+/sources/settings.php
+/sources/welcome.php
+
+/themes/dolphin/images/icons/events/ (all the files)
+/themes/dolphin/images/icons/settings/ (all the files)
+/themes/dolphin/images/icons/down_arrow_b.png
+/themes/dolphin/html/admin/ (all the files)
+/themes/dolphin/html/settings/ (all the files)
+/themes/dolphin/html/shared/timeline.html
+/themes/dolphin/html/welcome/content.html
+/themes/dolphin/html/wrapper.html
+/themes/dolphin/js/functions.js
+/themes/dolphin/info.php
+/themes/dolphin/style.css
+
+index.php
+info.php
+page.php
+thumb.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Reworked the General, Users and Social settings pages from the Admin Panel
+- Added Moderators level in the Admin Panel (users can now be promoted to moderators)
+- Added Email Verification (account activation) option in the Admin Panel
+- Added SMTP integration
+- Added "Blocked Users" page in Users Settings which shows all the blocked users
+- Added the possibility to include a Settings page for plugins
+- Added activate and deactivate plugin events
+- Added new fields when editing an user in the Admin Panel
+- Added new CSS classes to the Admin Panel, User Settings and Pages menus
+- Added error messages when account is suspended or unconfirmed
+- Added icons for the sidebar menus from the Admin and User Panels
+- Improved the Photo Galleries (now accomodates based on the number of photos)
+- Improved the Edit User section in the Admin Panel (added tabbed pages)
+- Improved the delete functionality when deleting a report
+- Improved the user's privacy in listings (location is now hidden unless public)
+- Improved the notification counter for the new messages posted in groups
+- Fixed an issue with the deletion of groups or users from groups with no messages
+- Other minor improvements

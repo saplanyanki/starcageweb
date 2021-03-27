@@ -1,0 +1,34 @@
+How to update from phpSocial v2.0.3 to v2.0.4 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+--------------------------------- MySQL ------------------------------------
+Log-in into phpMyAdmin (or your MySQL database) and on the SQL tab run the following SQL query:
+
+ALTER TABLE  `plugins` CHANGE  `type`  `type` VARCHAR( 64 ) NOT NULL;
+
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+/languages/english.php
+
+/sources/feed.php
+/sources/group.php
+/sources/profile.php
+
+/themes/dolphin/html/shared/timeline.html
+/themes/dolphin/html/shared/top.html
+/themes/dolphin/js/functions.js
+/themes/dolphin/info.php
+/themes/dolphin/style.css
+
+[or do a clean reinstall]
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Added a new plugin hook (you can now add events to the message form)
+- Added a new plugin hook (you can now add content to the Feed page)
+- Added a new plugin hook (you can now add content to the Profile page)
+- Changed the `type` plugin column field (now supports up to 64 plugin hooks)
+- Improved the UX while sharing a status message
+- Improved the English language file (removed unused strings)

@@ -1,0 +1,32 @@
+How to update from phpSocial v2.0.7 to v2.0.8 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+/languages/english.php
+
+/requests/delete.php
+
+/themes/dolphin/html/recover/content.html
+/themes/dolphin/html/recover/error.html
+/themes/dolphin/js/functions.js
+/themes/dolphin/info.php
+/themes/dolphin/style.css
+
+/sources/admin.php
+
+info.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Added a new plugin hook (now you can do actions when a message is deleted)
+- Added First and Last name auto-complete when registering with Facebook
+- Improved the Type 1 plugin hook (now it can return error messages)
+- Improved the chat friends list (now it remembers the minimized/maximized state)
+- Improved the password error messages in the Admin Panel
+- Improved the search input behaviour
+- Improved the delete event function and animation
+- Fixed an issue with the birthdate resetting when changing other settings
+- Other minor improvements

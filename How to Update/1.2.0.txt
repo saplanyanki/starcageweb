@@ -1,0 +1,66 @@
+How to update from phpSocial v1.1.9 to v1.2.0 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+--------------------------------- MySQL ------------------------------------
+Log-in into phpMyAdmin (or your MySQL database) and on the SQL tab run the following two queries:
+1)
+DROP TABLE `notifications`
+
+2)
+CREATE TABLE IF NOT EXISTS `notifications` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `from` int(11) NOT NULL,
+  `to` int(11) NOT NULL,
+  `parent` int(11) NOT NULL,
+  `child` int(11) NOT NULL,
+  `type` int(11) NOT NULL,
+  `read` int(11) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+/sources/feed.php
+/sources/timeline.php
+/sources/notifications.php
+/sources/admin.php
+/sources/post.php
+
+/requests/check_notifications.php
+
+/languages/english.php
+/languages/netherlands.php
+/languages/romanian.php
+
+/themes/dolphin/html/feed/sidebar.html
+/themes/dolphin/html/timeline/sidebar.html
+/themes/dolphin/html/admin/users_settings.html
+/themes/dolphin/js/functions.js
+/themes/dolphin/style.css
+/themes/dolphin/info.php
+
+[or do a clean reinstall]
+
+----------------------------------------------------------------------------
+--------------------------------- Changelog --------------------------------
+- Completely reworked the entire Notification System (now they are about you)
+- Added Notification System for the New Chat Messages (with small text snippets)
+- Added Notification Counter for Global & Chat Notifications
+- Added title tags for the Post pages
+- Added Friends Activity (latest 20 events) on Feed and Timeline pages
+- Added Lightbox View for the Cover Image & Avatar Image
+- Added 'visual_refresh' parameter to Maps (Enables the new Google Maps display)
+- Added Search by Email to the unified search (Exact Match)
+- Added Verified Badges to Live Search, Search Page and Friends Page
+- Improved the Search Results (Verified persons have priority in the results)
+- Improved the Friends Suggestions (Showing only public profiles)
+- Improved the Recent People Chat (Showing unread messages with a grey background)
+- Improved the English and Romanian language files
+- Improved the Vimeo Url Insertion
+- Fixed a small bug where in rare to none cases the user couldn't change his password
+- Fixed a small issue with the Welcome widget from the sidebar

@@ -1,0 +1,61 @@
+How to update from phpSocial v2.1.8 to v2.1.9 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+--------------------------------- MySQL ------------------------------------
+Log-in into phpMyAdmin (or your MySQL database) and on the SQL tab run the following queries:
+
+CREATE TABLE IF NOT EXISTS `info_pages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `url` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `public` tinyint(4) NOT NULL,
+  `content` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+ALTER TABLE  `settings` 
+ADD  `language` VARCHAR( 32 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL AFTER  `smtp_password` ,
+ADD  `email_provider` VARCHAR( 256 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL AFTER  `language` ,
+ADD  `timezone` VARCHAR( 32 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL AFTER  `email_provider`;
+UPDATE `settings` SET `language` = 'english';
+
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+/includes/skins.php
+
+/languages/english.php
+
+/themes/dolphin/html/wrapper.html
+/themes/dolphin/html/admin/edit_user.html
+/themes/dolphin/html/admin/info_pages.html
+/themes/dolphin/html/admin/languages.html
+/themes/dolphin/html/admin/plugins.html
+/themes/dolphin/html/admin/site_settings.html
+/themes/dolphin/html/admin/themes.html
+/themes/dolphin/html/info/content.html
+/themes/dolphin/html/shared/menu.html
+/themes/dolphin/images/icons/settings/info.png
+/themes/dolphin/images/icons/settings/languages.png
+/themes/dolphin/js/functions.js
+/themes/dolphin/style.css
+/themes/dolphin/info.php
+
+/sources/admin.php
+/sources/info.php
+/sources/welcome.php
+
+index.php
+info.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Added complete support for smiles, image upload, and plugins for Mobile Chat
+- Added dynamic custom Info Pages (Admin Panel)
+- Added the ability to restrict registration to certain email providers (Admin Panel)
+- Added the ability to change the site's logo (Admin Panel)
+- Added the ability to change the timezone (Admin Panel)
+- Added the ability to change the default language (Admin Panel)
+- Improved the language system
+- Improved the site translation
+- Other minor improvements

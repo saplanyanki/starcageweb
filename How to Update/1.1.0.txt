@@ -1,0 +1,46 @@
+How to update from phpSocial v1.0.1 to v1.1.0
+---------------------------------------------------------------------------
+--------------------------------- MySQL -----------------------------------
+
+Log-in into phpMyAdmin (or your MySQL database) and on the SQL tab run the following query:
+
+ALTER TABLE  `messages` ADD  `tag` VARCHAR( 256 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL AFTER  `message`
+
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/api.php
+/includes/classes.php
+/languages/romanian.php 	($LNG['sidebar_trending'], $LNG['no_results_ttl'])
+/languages/english.php		($LNG['sidebar_trending'], $LNG['no_results_ttl'])
+/sources/search.php
+/sources/feed.php
+/sources/timeline.php
+/requests/load_tags.php
+/requests/post_message.php
+/uploads/avatars/index.html
+/uploads/covers/index.html
+/uploads/media/index.html
+
+/themes/dolphin/html/search/sidebar.html
+/themes/dolphin/js/functions.js
+/themes/dolphin/style.css
+/themes/dolphin/html/feed	[entire folder]
+/themes/dolphin/html/timeline	[entire folder]
+
+[or do a clean reinstall]
+
+----------------------------------------------------------------------------
+--------------------------------- Changelog --------------------------------
+- Now allowing to post images, events, maps, without having to have any text in message
+- Added #hashtags function for Messages, Comments and Chat
+- Added Unified Search Box [users and #hashtags]
+- Added #hashtags suggestions as the user types in
+- Added Top 5 Trending Topics to Timeline/Feed page
+- Added Top 10 Trending Topics to the #hashtags search page
+- Added the author posts in News Feed as well
+- Added support for 'youtub.be' link for YouTube
+- Added 4 for more shortcut smiles
+- Fixed a broken URL after sharing someone else's message
+- Fixed a bug with the Suggested Friends

@@ -1,0 +1,20 @@
+How to update from phpSocial v1.1.4 to v1.1.5 [Don't forget to back up your files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+/languages/english.php
+/languages/romanian.php
+/themes/dolphin/html/admin/stats.html
+
+[or do a clean reinstall]
+
+----------------------------------------------------------------------------
+--------------------------------- Changelog --------------------------------
+- Added UTF8 support for e-mails
+- Added full names for the drop down notifications and for the notifications page
+- Improved the theme translation (added more strings)
+- Fixed a bug in Admin Panel which caused the Theme icons to appear wrong
+- Fixed missing strings in english.php, romanian.php (from update 1.1.4)
+- Fixed a bug in the User Profile, 'All Events' filter redirecting to profile page

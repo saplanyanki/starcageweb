@@ -1,0 +1,29 @@
+How to update from phpSocial v3.0.0 to v3.0.1 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+--------------------------------- MySQL ------------------------------------
+Log-in into phpMyAdmin (or your MySQL database) and on the SQL tab run the following queries:
+
+ALTER TABLE `users` CHANGE `username` `username` VARCHAR(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, CHANGE `password` `password` VARCHAR(256) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, CHANGE `email` `email` VARCHAR(256) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, CHANGE `website` `website` VARCHAR(128) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '', CHANGE `facebook` `facebook` VARCHAR(256) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '', CHANGE `twitter` `twitter` VARCHAR(128) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '', CHANGE `gplus` `gplus` VARCHAR(256) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '';
+
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+/sources/profile.php
+/sources/recover.php
+
+/themes/dolphin/style.css
+/themes/dolphin/info.php
+
+.htaccess
+info.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Improved support for PHP 7.1+
+- Improved character encoding support
+- Fixed permalinks for combined search filters
+- Fixed a security fix regression
+- Other minor improvements

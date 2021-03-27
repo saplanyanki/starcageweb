@@ -1,0 +1,25 @@
+How to update from phpSocial v3.0.6 to v3.0.7 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+/requests/like.php
+
+/sources/page.php
+
+/themes/dolphin/html/wrapper.html
+/themes/dolphin/js/functions.js
+/themes/dolphin/info.php
+
+index.php
+info.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Improved the Image & Webcam upload for Chat (added loading preloaders)
+- Improved the translation (single quotes can now be used for the Timeago strings)
+- Improved software speed (Page Likes counter now makes use of the cache value)
+- Fixed an issue where Page Notifications wouldn't get marked as read
+- Other minor improvements

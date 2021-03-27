@@ -1,0 +1,30 @@
+How to update from phpSocial v1.2.8 to v1.2.9 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+/includes/captcha.php
+
+/languages/english.php
+/languages/romanian.php
+/languages/netherlands.php
+
+/sources/recover.php
+/sources/profile.php
+
+/themes/dolphin/html/style.css
+/themes/dolphin/html/info.php
+/themes/dolphin/html/recover/username.html
+/themes/dolphin/html/admin/login.html
+
+[or do a clean reinstall]
+
+----------------------------------------------------------------------------
+--------------------------------- Changelog --------------------------------
+- Added Recover account password using the email
+- Added Title tags for Likes, Friends and Have as friend profile pages
+- Improved the account recovery process (usernames are case insensitive now)
+- Improved the translation (New strings added for Admin Log-in page)
+- Improved the user registration process
+- Improved the Captcha image

@@ -1,0 +1,33 @@
+How to update from phpSocial v4.4.0 to v4.5.0 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+--------------------------------- MySQL ------------------------------------
+Log-in into phpMyAdmin (or your MySQL database) and on the SQL tab run the following queries:
+
+ALTER TABLE `settings` ADD `smtp_secure` VARCHAR(32) NOT NULL AFTER `smtp_port`;
+
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/vendor/* (all files)
+/includes/classes.php
+
+/languages/english.php
+
+/sources/admin.php
+
+/themes/dolphin/html/admin/site_settings.html
+/themes/dolphin/html/wrapper.html
+/themes/dolphin/images/favicon.png
+/themes/dolphin/js/jquery.js
+/themes/dolphin/info.php
+
+info.php
+
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Added SMTP Secure option in the Admin Panel
+- Updated PHPMailer to the latest version
+- Updated the jQuery library to the latest version
+- Improved the themes system (favicons are now theme dependent)
+- Other minor improvements

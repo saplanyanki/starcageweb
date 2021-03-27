@@ -1,0 +1,47 @@
+How to update from phpSocial v1.2.3 to v1.2.4 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+--------------------------------- MySQL ------------------------------------
+Log-in into phpMyAdmin (or your MySQL database) and on the SQL tab run the following queries:
+
+1)
+ALTER TABLE  `users` ADD  `sound_new_notification` TINYINT NOT NULL AFTER  `email_new_friend`
+
+2)
+ALTER TABLE  `users` ADD  `sound_new_chat` TINYINT NOT NULL AFTER  `sound_new_notification`
+
+3)
+ALTER TABLE  `settings` ADD  `sound_new_notification` TINYINT NOT NULL AFTER  `email_new_friend`
+
+4)
+ALTER TABLE  `settings` ADD  `sound_new_chat` TINYINT NOT NULL AFTER  `sound_new_notification`
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+/languages/english.php
+/languages/netherlands.php
+/languages/romanian.php
+
+/sources/admin.php
+/sources/messages.php
+/sources/settings.php
+/sources/welcome.php
+
+/themes/dolphin/html/settings/notifications.html
+/themes/dolphin/html/messages/content.html
+/themes/dolphin/html/admin/users_settings.html
+/themes/dolphin/js/functions.js
+/themes/dolphin/sounds (entire folder)
+/themes/dolphin/info.php
+
+[or do a clean reinstall]
+
+----------------------------------------------------------------------------
+--------------------------------- Changelog --------------------------------
+- Added Sound Notification upon new Global & Messages notifications
+- Added Sound Notification upon new live chat message arrival
+- Added Dynamic Title Tag [exclamation tag (!)] upon new Global & Messages notifications
+- Added Dynamic Title Tag [exclamation tag (!)] upon new live chat message arrival
+- Sound Notification and Dynamic Title tag triggers when the page is not focused (inactive)

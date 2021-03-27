@@ -1,0 +1,28 @@
+How to update from phpSocial v1.2.6 to v1.2.7 [Don't forget to back up your database/files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+/languages/netheralnds.php
+/languages/romanian.php
+/languages/english.php
+
+/requests/load_likes.php
+/requests/load_tags.php
+/sources/profile.php
+
+/themes/dolphin/js/functions.js
+/themes/dolphin/style.css
+/themes/dolphin/info.php
+
+[or do a clean reinstall]
+
+----------------------------------------------------------------------------
+--------------------------------- Changelog --------------------------------
+- Added Likes Activity page for each user where all the likes activity of an user can be seen
+- Added the number of liked posts by an user (in the About section)
+- Improved the security against cross site scripting on load comments and chat messages function
+- Fixed an issue on the Search Tags page where in some cases the likes avatars wouldn't appear
+- Fixed a typo in netherlands.php language file

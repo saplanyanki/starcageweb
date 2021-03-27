@@ -1,0 +1,23 @@
+How to update from phpSocial v1.1.7 to v1.1.8 [Don't forget to back up your files before proceeding]
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+Upload and replace the following files on your server:
+
+/includes/classes.php
+
+/languages/english.php
+/languages/nederlands.php
+/languages/romanian.php
+
+/themes/dolphin/html/welcome/content.html
+/themes/dolphin/html/recover/error.html
+/themes/dolphin/info.php
+
+[or do a clean reinstall]
+
+----------------------------------------------------------------------------
+--------------------------------- Changelog --------------------------------
+- Translated the Welcome page
+- Translated the sidebar Archive filters
+- Reverted back to First Lastname format
+- Added input type password for the recovery form

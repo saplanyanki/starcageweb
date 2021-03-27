@@ -1,0 +1,132 @@
+How to update from phpSocial v1.3.1 to v2.0.0
+
+IMPORTANT NOTE: Backup your entire website and database before proceeding with the update. By updating to 2.0.0 all your current friendship relations will be lost due to a new system being implemented.
+
+----------------------------------------------------------------------------
+--------------------------------- MySQL ------------------------------------
+Log-in into phpMyAdmin (or your MySQL database) and on the SQL tab run the following queries (copy/paste the entire code block):
+
+ALTER TABLE  `likes` ADD  `type` INT NOT NULL AFTER  `by`;
+DROP TABLE `relations`;
+DELETE FROM `notifications` WHERE `type` = 4;
+ALTER TABLE  `reports` ADD  `time` TIMESTAMP NOT NULL AFTER  `state`;
+ALTER TABLE  `users` ADD  `country` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL AFTER  `last_name`;
+ALTER TABLE  `users` ADD  `address` VARCHAR( 256 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL AFTER  `location`;
+ALTER TABLE  `users` ADD  `work` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL AFTER  `address`;
+ALTER TABLE  `users` ADD  `school` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL AFTER  `work`;
+ALTER TABLE  `users` ADD  `interests` TINYINT NOT NULL AFTER  `gender`;
+ALTER TABLE  `users` ADD  `ip` VARCHAR( 45 ) NOT NULL AFTER  `offline`;
+ALTER TABLE  `users` ADD  `suspended` INT NOT NULL AFTER  `private`;
+ALTER TABLE  `users` ADD  `notificationg` TINYINT NOT NULL DEFAULT  '1' AFTER  `notificationf`;
+ALTER TABLE  `users` ADD  `email_group_invite` TINYINT NOT NULL DEFAULT  '1' AFTER  `email_new_friend`;
+ALTER TABLE  `users` DROP `background`;
+ALTER TABLE  `settings` ADD  `aperip` INT NOT NULL AFTER  `lperpost`;
+ALTER TABLE  `settings` ADD  `fbapp` INT NOT NULL AFTER  `smiles`;
+ALTER TABLE  `settings` ADD  `fbappid` VARCHAR( 128 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL AFTER  `fbapp`;
+ALTER TABLE  `settings` ADD  `fbappsecret` VARCHAR( 128 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL AFTER  `fbappid`;
+ALTER TABLE  `settings` ADD  `notificationg` TINYINT NOT NULL DEFAULT  '1' AFTER  `notificationf`;
+ALTER TABLE  `settings` ADD  `email_group_invite` TINYINT NOT NULL DEFAULT  '1' AFTER  `email_new_friend`;
+ALTER TABLE  `settings` DROP `rperpage`;
+UPDATE `messages` SET `type` = 'video' WHERE `type` = 'movie';
+ALTER TABLE  `messages` ADD  `group` INT NOT NULL AFTER  `value`;
+CREATE TABLE IF NOT EXISTS `plugins` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `type` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+CREATE TABLE IF NOT EXISTS `friendships` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user1` int(11) NOT NULL,
+  `user2` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+CREATE TABLE IF NOT EXISTS `groups` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `cover` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `privacy` int(11) NOT NULL,
+  `posts` int(11) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+CREATE TABLE IF NOT EXISTS `groups_users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `group` int(11) NOT NULL,
+  `user` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `permissions` int(11) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+----------------------------------------------------------------------------
+---------------------------------- FTP -------------------------------------
+How to update the files:
+
+Upload the entire software except the "cache", "includes" and "uploads" folders. Upload the files inside the "includes" folder except for "/includes/config.php" which you need to update manually.
+
+[or do a clean reinstall]
+
+The list of affected files can be found at: http://pastebin.com/raw.php?i=fk78Aing
+----------------------------------------------------------------------------
+------------------------------- Changelog ----------------------------------
+- Reworked the Friends System (now based on friendship "requests" instead of "follow")
+- Reworked the Feed page (merged the Timeline page to include your own posts into the feed)
+- Reworked the Sharing System (now the entire message content is being shared)
+- Reworked the Manage Users & Edit user pages (Admin Panel)
+- Reworked the Manage Reports page (Admin Panel)
+- Reworked the Themes page (Admin Panel)
+- Reworked the Statistics page (Admin Panel)
+- Added Groups system
+- Added Plugins system
+- Added Chat with multiple windows
+- Added Facebook Login integration
+- Added Suspend User option in the Admin Panel
+- Added Birthdays event notifications
+- Added Edit option for messages (you can now edit the text of your messages)
+- Added a new privacy option for messages (you can now share your status with friends only)
+- Added context menu for messages
+- Added dynamic page load navigation
+- Added dynamic new messages load for Feed and Profile pages
+- Added Open Sans font site-wide
+- Added IP logging for user registration
+- Added Admin option to limit the number of accounts registration allowed per IP
+- Added the possibility to hide the birth date by unsetting it
+- Added password repeat field on Admin Panel and User Account Settings
+- Added password lenght limit (minimum 6 characters) for Admin And User Accounts
+- Added a limit cap of 10 results for #hashtag live search suggestions
+- Added closing menu, notifications and search drop-downs on background clicking
+- Added horizontal menu on profiles for quick access to Timeline, About, Friends, Likes pages
+- Added new profile fields (interests, address, country, school, work)
+- Added notification counter for pending reports on the Manage Reports admin link
+- Added Like, Cheeky and Cool emoticon for chat, comments and messages (y)
+- Improved the block function (now prevents chatting, commenting and friend requests)
+- Improved the Likes page of a status message by showing the complete message
+- Improved the User Account Settings page
+- Improved the covers size on the profile cards
+- Improved the Trending Topics to be generated from the last 7 days instead of the last day
+- Improved the sidebar event filters (added show more button if the list contains more than 5 filters)
+- Improved the sidebar event filters (they are now sorted)
+- Improved the dropdown inputs (added custom dropdown arrow for consistency)
+- Improved the user deletion system (now all profile and messages images are deleted)
+- Improved the deletion of shared messages (the notifications of shared messages are now removed)
+- Improved the browser tab title on new notifications (now shows the actual number)
+- Improved the Friends Suggestions (now they are based on the user's interests)
+- Improved the Cover and Profile Image upload process (now it's much more user friendly)
+- Improved the Cover and Profile Image upload process (old images are now deleted from the server)
+- Improved the Live Search server usage and speed performance
+- Improved the Chat Search server usage and speed performance
+- Updated the API to include the Country, City and Address for profile requests
+- Updated the jQuery library to the latest stable version
+- Updated the interface to be more consistent and unified
+- Combined the Movie event with the Video event
+- Fixed an issue where images from posts could be deleted by someone else
+- Fixed an issue where tags would be allowed on profile page titles
+- Fixed an issue with the Admin Panel page title
+- Fixed an issue where #hashtags would be generated from private messages
+- Other interface, code and database speed improvements
