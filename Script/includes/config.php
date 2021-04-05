@@ -5,15 +5,15 @@ $CONF = $TMPL = array();
 
 // The MySQL credentials
 $CONF['host'] = 'localhost';
-$CONF['user'] = 'u104610824_starcageyanki';
+$CONF['user'] = 'u268357242_test';
 $CONF['pass'] = 'Boncuk11-';
-$CONF['name'] = 'u104610824_starcage';
+$CONF['name'] = 'u268357242_test';
 
 // The Installation URL
-$CONF['url'] = 'http://starcage.online/';
+$CONF['url'] = 'http://yankisaplan.com/';
 
 // The Notifications e-mail
-$CONF['email'] = 'yankisaplan@yahoo.com';
+$CONF['email'] = 'email@email.com';
 
 // The themes directory
 $CONF['theme_path'] = 'themes';
