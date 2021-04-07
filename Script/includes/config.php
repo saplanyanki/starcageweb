@@ -10,7 +10,7 @@ $CONF['pass'] = 'Boncuk11-';
 $CONF['name'] = 'u268357242_test';
 
 // The Installation URL
-$CONF['url'] = 'http://yankisaplan.com/';
+$CONF['url'] = 'https://yankisaplan.com/';
 
 // The Notifications e-mail
 $CONF['email'] = 'email@email.com';
