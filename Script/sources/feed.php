@@ -67,7 +67,7 @@ function PageMain() {
 		$TMPL['friends'] = $feed->sidebarFriends(0, 0);
 		$TMPL['friendsactivity'] = $feed->sidebarFriendsActivity(20, 1);
 		if($feed->friendsCount <= 10) {
-			$TMPL['suggestions'] = $feed->sidebarSuggestions($user['opentowork']);
+			$TMPL['suggestions'] = $feed->sidebarSuggestions($user['interests']);
 		}
 		$TMPL['ad'] = generateAd($settings['ad2']);
 		

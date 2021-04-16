@@ -658,12 +658,12 @@ function PageMain() {
                         $TMPL['fgender'] = 'selected="selected"';
                     }
 
-                    if($userSettings['opentowork'] == '0') {
-                        $TMPL['nopentowork'] = 'selected="selected"';
-                    } elseif($userSettings['opentowork'] == '1') {
-                        $TMPL['mopentowork'] = 'selected="selected"';
+                    if($userSettings['interests'] == '0') {
+                        $TMPL['ninterests'] = 'selected="selected"';
+                    } elseif($userSettings['interests'] == '1') {
+                        $TMPL['minterests'] = 'selected="selected"';
                     } else {
-                        $TMPL['wopentowork'] = 'selected="selected"';
+                        $TMPL['winterests'] = 'selected="selected"';
                     }
 
                     if($userSettings['private'] == '1') {

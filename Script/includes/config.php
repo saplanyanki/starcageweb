@@ -1,19 +1,19 @@
 <?php
 error_reporting(0);
-
+@ini_set('upload_max_size' , '256M' );
 $CONF = $TMPL = array();
 
 // The MySQL credentials
 $CONF['host'] = 'localhost';
-$CONF['user'] = 'u268357242_test';
+$CONF['user'] = 'u104610824_starcageyanki';
 $CONF['pass'] = 'Boncuk11-';
-$CONF['name'] = 'u268357242_test';
+$CONF['name'] = 'u104610824_starcage';
 
 // The Installation URL
-$CONF['url'] = 'https://yankisaplan.com/';
+$CONF['url'] = 'http://starcage.online/';
 
 // The Notifications e-mail
-$CONF['email'] = 'email@email.com';
+$CONF['email'] = 'yankisaplan@yahoo.com';
 
 // The themes directory
 $CONF['theme_path'] = 'themes';
@@ -36,4 +36,5 @@ $action = array('admin'			=> 'admin',
 				);
 
 define('COOKIE_PATH', preg_replace('|https?://[^/]+|i', '', $CONF['url']).'/');
+
 ?>

@@ -3,11 +3,11 @@
 $name = 'Dolphin';
 
 // Theme Author
-$author = 'StarCage';
+$author = 'phpSocial';
 
 // Theme URL
-$url = 'https://starcage.online';
+$url = 'https://phpsocial.com';
 
 // Theme Version
-$version = 'Beta';
+$version = '3.5.0';
 ?>

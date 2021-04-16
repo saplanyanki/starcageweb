@@ -3,10 +3,10 @@
 $name = 'Announcements';
 
 // Plugin Author
-$author = 'StarCage';
+$author = 'phpSocial';
 
 // Plugin URL
-$url = 'https://starcage.online';
+$url = 'https://phpsocial.com';
 
 // Plugin Version
 $version = '1.0.7';

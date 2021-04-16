@@ -1,13 +1,13 @@
 <?php
-// Software Name
+// Theme Name
 $name = 'StarCage';
 
-// Software Author
+// Theme Author
 $author = 'StarCage';
 
-// Software URL
+// Theme URL
 $url = 'https://starcage.online';
 
-// Software Version
+// Theme Version
 $version = 'Beta';
 ?>
